@@ -17,7 +17,7 @@ FlagScraper::FlagScraper(const std::string& dir, bool showFlag0) :
 
 void FlagScraper::setUsage(int flag, FlagUsage fu)
 {
-	if (flag < 0 || flag >= static_cast<int>(flagUsages.size()))
+	if (flag < 0 || flag >= NumFlags)
 	{
 		std::cerr << "WARNING: Detected usage of out-of-bounds flag " << flag
 			<< "!\nThis flag usage will be ignored.\n";
@@ -102,9 +102,13 @@ void FlagScraper::processTSCFile(const std::string& filePath, const PXEReader* e
 					{
 						int delType = getNumber(ch + 4);
 						std::vector<Entity> npcs = entities->getEntities([delType](const Entity& e) { return e.type == delType; });
+						bool flags[NumFlags] = {};
 						for (const Entity& e : npcs)
-							if (e.flagNum != 0 || procFlag0)
+							if ((e.flagNum != 0 || procFlag0) && e.flagNum >= 0 && e.flagNum < NumFlags && !flags[e.flagNum])
+							{
 								setUsage(e.flagNum, FlagUsage(mapName, eventNum, delType, 0, FlagUsage::UsageType::DNA));
+								flags[e.flagNum] = true;
+							}
 					}
 				}
 			}

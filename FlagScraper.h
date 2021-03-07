@@ -22,7 +22,8 @@ public:
 		FlagUsage(std::string m, int e, int p, int p2, UsageType u) : mapName(std::move(m)), eventNum(e), param(p), param2(p2), usageType(u) {}
 	};
 
-	using UsagesArray = std::array<std::vector<FlagUsage>, 8000>;
+	static constexpr int NumFlags = 8000;
+	using UsagesArray = std::array<std::vector<FlagUsage>, NumFlags>;
 private:
 	UsagesArray flagUsages;
 	std::string dataDir;
