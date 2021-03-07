@@ -13,8 +13,8 @@ also scanned.
 
 ## Building
 
-Compile all of the files with a C++17 compiler (it must support
-the `<filesystem>` library) and link them together.
+Compile all of the \*.cpp/\*.h files with a C++17 compiler (it must
+support the `<filesystem>` library) and link them together.
 
 ## Usage
 
