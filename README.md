@@ -40,4 +40,6 @@ The program also supports one command-line option:
 * Will not detect flag usage in certain weird edge cases, like
   at the top of the script before the first event, or \<DNP/\<DNA
   in Head.tsc/ArmsItem.tsc/StageSelect.tsc, etc.
+* Does not (yet) display entity names (only their type IDs)
+* Probably has bugs (I didn't test it very extensively, to be honest)
 * Does not make lunch
